@@ -24,6 +24,8 @@ __Après avoir save le fichier post-receive, faire :__
 * git commit -m "First deploy with git"
 * git push live master
 
+## SUR SERVEUR DISTANT :
+
 * php composer.phar self-update
 * php composer.phar update
 * php composer.phar install --no-dev --optimize-autoloader
@@ -37,12 +39,12 @@ __Après avoir save le fichier post-receive, faire :__
 * /Users/xxx/.ssh/1and1_rsa
 * mdp (optionnel)
 
-### Copier contenu 1and1_rsa.pub (local) dans /.ssh/authorized_keys (distant à la racine du serveur 1and1).
+### Copier contenu 1and1_rsa.pub (local) dans ~/.ssh/authorized_keys (distant à la racine du serveur 1and1).
 on peut le faire en uploadant 1and1_rsa.pub sur le serveur.
-* cat id_rsa.pub >> ~\.ssh\authorized_keys
+* cat id_rsa.pub >> ~/.ssh/authorized_keys
 
 ### En local :
-* cd .ssh
+* cd ~/.ssh
 * ssh-add 1and1_rsa
 
 ### test en indiquant : 
