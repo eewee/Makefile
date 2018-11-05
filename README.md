@@ -10,4 +10,4 @@ Permet de :
 * Mettre à jour le core et tous les plugins de Wordpress (cmd : "make update")
 
 ## Symfony
-* Deploy project.
+* Deploy project on FTP.
