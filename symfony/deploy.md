@@ -35,7 +35,7 @@ __Après avoir save le fichier post-receive, faire :__
 ## SSH 1and1 :
 ### Générer key :
 * cd .ssh
-* ssh-keygen -t rsa -C “contact@eewee.fr” -b 4096
+* ssh-keygen -t rsa -C “your_email@tld.com” -b 4096
 * /Users/xxx/.ssh/1and1_rsa
 * mdp (optionnel)
 
