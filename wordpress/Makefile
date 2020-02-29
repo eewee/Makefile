@@ -20,7 +20,7 @@
 #	  - DB_NAME: ma_new_db
 #	  - DB_USER: root
 #	  - DB_PASSWORD: root
-#	  - DB_HOST: 127.0.0.1:8889
+#	  - DB_HOST: 127.0.0.1:3306
 # 
 # IMPORTANT : Si vous utilisez un vhost
 # - Edit .htaccess local
@@ -41,7 +41,7 @@ VERSION_MAKEFILE=1.0
 admin_email_local=wp_test_makefile@tld.com
 admin_user_local=admin
 admin_password_local=admin
-dbhost_local=127.0.0.1:8889
+dbhost_local=127.0.0.1:3306
 dbname_local=wp_test_$(shell date +%Y-%m-%d_%H-%m-%S)
 dbuser_local=root
 dbpass_local=root
@@ -50,7 +50,7 @@ dbprefix_local=wTESTp_
 ifeq ($(ENV), dev)
 	# Utilise pour replace en db (sans le protocole "http(s)://"):
 	domain_distant=dev.monSite.com
-	domain_local=127.0.0.1:8888/test_makefile
+	domain_local=127.0.0.1:80/test_makefile
 
 	path_distant=~/monsite_com_dev/
 	path_local=./
@@ -58,7 +58,7 @@ ifeq ($(ENV), dev)
 else ifeq ($(ENV), prod)
 	# Utilise pour replace en db (sans le protocole "http(s)://"):
 	domain_distant=www.monSite.com
-	domain_local=127.0.0.1:8888/test_makefile
+	domain_local=127.0.0.1:80/test_makefile
 
 	path_distant=~/monsite_com_prod/
 	path_local=./
