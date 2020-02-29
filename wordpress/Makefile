@@ -204,8 +204,9 @@ install_local: ## Installer une nouvelle version de Wordpress (en local)
 	#wp plugin install updraftplus --activate
 	#wp plugin install backwpup
 
-	$(call message_primary, "INSTALL THEME \(astra\)")
-	wp theme install astra --activate
+	$(call message_primary, "INSTALL THEME")
+	#wp theme install astra --activate
+	wp theme install twentytwenty --activate
 
 	$(call message_primary, "PAGES CREATE - accueil / blog / contact / mentions megales")
 	wp post create --post_type=page --post_title='Accueil' --post_status=publish
