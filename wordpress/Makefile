@@ -106,7 +106,7 @@ _IWHITE=\x1b[47m
 # @param $(1) votre message ici
 # @return string
 define message_primary
-	@echo "\n${_BOLD}${_BLUE}---- $1 ----${_END}"
+	@echo -e "\n${_BOLD}${_BLUE}---- $1 ----${_END}"
 endef
 
 # Appeler la fonction : @echo $(call test_fonction_custom, lorem, ipsum)
@@ -155,14 +155,14 @@ test_affiche: ## Afficher : info, warning, error
 	$(error test pour afficher une erreur + exit)
 
 test_color: ## Afficher : texte avec couleur (font or background)
-	@echo "${_BOLD}${_GREY}Hello World${_END}"
-	@echo "${_BOLD}${_GREEN}Hello World${_END}"
-	@echo "${_BOLD}${_RED}Hello World${_END}"
-	@echo "${_BOLD}${_YELLOW}Hello World${_END}"
-	@echo "${_BOLD}${_BLUE}Hello World${_END}"
-	@echo "${_BOLD}${_PURPLE}Hello World${_END}"
-	@echo "${_BOLD}${_CYAN}Hello World${_END}"
-	@echo "${_BOLD}${_WHITE}Hello World${_END}"
+	@echo -e "${_BOLD}${_GREY}Hello World${_END}"
+	@echo -e "${_BOLD}${_GREEN}Hello World${_END}"
+	@echo -e "${_BOLD}${_RED}Hello World${_END}"
+	@echo -e "${_BOLD}${_YELLOW}Hello World${_END}"
+	@echo -e "${_BOLD}${_BLUE}Hello World${_END}"
+	@echo -e "${_BOLD}${_PURPLE}Hello World${_END}"
+	@echo -e "${_BOLD}${_CYAN}Hello World${_END}"
+	@echo -e "${_BOLD}${_WHITE}Hello World${_END}"
 
 #---------------------------------------------------------------
 # NEW INSTALL WP (en local)
