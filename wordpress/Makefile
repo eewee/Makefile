@@ -99,6 +99,18 @@ _ICYAN=\x1b[46m
 _IWHITE=\x1b[47m
 
 #---------------------------------------------------------------
+# DETECT OS
+#---------------------------------------------------------------
+os_custom=""
+ifeq ($(OS), Windows_NT)
+	os_custom=windows
+else ifeq ($(OS), Darwin)
+	os_custom="mac"
+else
+	os_custom=""
+endif
+
+#---------------------------------------------------------------
 # FONCTION
 #---------------------------------------------------------------
 
@@ -230,13 +242,13 @@ install_local: ## Installer une nouvelle version de Wordpress (en local)
 	wp menu item add-post menu-principal 6
 
 	$(call message_primary, "SUPPRIMER : plugin - theme - articles exemples")
-	wp post delete 1 --force # supprime : article + commentaire
-	wp post delete 2 --force # supprime : article + commentaire
-	wp plugin delete hello
+	wp post delete 1 --force
+	wp post delete 2 --force
+	wp option update blogdescription ''
 	wp theme delete twentytwenty
 	wp theme delete twentynineteen
 	wp theme delete twentyseventeen
-	wp option update blogdescription ''
+	wp plugin delete hello
 
 	$(call message_primary, "UTILISER PERMALIENS")
 	wp option get permalink_structure
@@ -247,14 +259,23 @@ install_local: ## Installer une nouvelle version de Wordpress (en local)
 	wp option update category_base theme
 	wp option update tag_base sujet
 
+ifeq ($(os_custom), mac)
 	$(call message_primary, "GIT - init")
 	git init
 	git add -A
 	git commit -m "Initial commit" > /dev/null 2>&1
+endif
 
 	$(call message_primary, "OPEN PAGES - accueil et admin")
+ifeq ($(os_custom), windows)
+	@echo -e "windows"
+	start "http://"$(domain_local)
+	start "http://"$(domain_local)"/wp-admin"
+else
+	@echo -e "mac"
 	open "http://"$(domain_local)
 	open "http://"$(domain_local)"/wp-admin"
+endif
 
 #---------------------------------------------------------------
 # IMPORT (en local)
