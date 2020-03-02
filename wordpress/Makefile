@@ -35,7 +35,7 @@
 ENV=dev
 ssh=u12345678@home123456789.1and1-data.host
 error_custom=---- ENV:$(ENV) ----
-VERSION_MAKEFILE=1.0
+VERSION_MAKEFILE=1.1
 
 # Seulement utilise pour une nouvelle installation de WP (en local)
 admin_email_local=wp_test_makefile@tld.com
@@ -133,10 +133,6 @@ endef
 help: ## Affiche cette aide
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-test: ## Test : utilisation de fonctions
-	$(call test_fonction_custom_1, "loremA", "ipsumA")
-	@echo $(call test_fonction_custom_2, lorem, ipsum)
-
 config: ## Afficher la config actuellement en place
 	@echo '#####################################################'
 	@echo '# CONFIG CURRENT (v$(VERSION_MAKEFILE)) :'
@@ -161,20 +157,24 @@ update: ## LOCAL : update core and plugins all
 	wp core update
 	wp plugin update --all
 
+test: ## Test : utilisation de fonctions
+	$(call test_fonction_custom_1, "loremA", "ipsumA")
+	@echo $(call test_fonction_custom_2, lorem, ipsum)
+
 test_affiche: ## Afficher : info, warning, error
 	$(info test pour afficher un simple message)
 	$(warning test pour afficher un warning)
 	$(error test pour afficher une erreur + exit)
 
 test_color: ## Afficher : texte avec couleur (font or background)
-	@echo -e "${_BOLD}${_GREY}Hello World${_END}"
-	@echo -e "${_BOLD}${_GREEN}Hello World${_END}"
-	@echo -e "${_BOLD}${_RED}Hello World${_END}"
-	@echo -e "${_BOLD}${_YELLOW}Hello World${_END}"
-	@echo -e "${_BOLD}${_BLUE}Hello World${_END}"
-	@echo -e "${_BOLD}${_PURPLE}Hello World${_END}"
-	@echo -e "${_BOLD}${_CYAN}Hello World${_END}"
-	@echo -e "${_BOLD}${_WHITE}Hello World${_END}"
+	@echo "${_BOLD}${_GREY}Hello World${_END}"
+	@echo "${_BOLD}${_GREEN}Hello World${_END}"
+	@echo "${_BOLD}${_RED}Hello World${_END}"
+	@echo "${_BOLD}${_YELLOW}Hello World${_END}"
+	@echo "${_BOLD}${_BLUE}Hello World${_END}"
+	@echo "${_BOLD}${_PURPLE}Hello World${_END}"
+	@echo "${_BOLD}${_CYAN}Hello World${_END}"
+	@echo "${_BOLD}${_WHITE}Hello World${_END}"
 
 #---------------------------------------------------------------
 # NEW INSTALL WP (en local)
@@ -242,9 +242,9 @@ install_local: ## Installer une nouvelle version de Wordpress (en local)
 	wp menu item add-post menu-principal 6
 
 	$(call message_primary, "SUPPRIMER : plugin - theme - articles exemples")
+	wp option update blogdescription ''
 	wp post delete 1 --force
 	wp post delete 2 --force
-	wp option update blogdescription ''
 	wp theme delete twentytwenty
 	wp theme delete twentynineteen
 	wp theme delete twentyseventeen
