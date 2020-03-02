@@ -227,7 +227,7 @@ install_local: ## Installer une nouvelle version de Wordpress (en local)
 	wp post create --post_type=page --post_title='Mentions Legales' --post_status=publish
 
 	$(call message_primary, "ARTICLES CREATE : FAKER")
-	curl -N http://loripsum.net/api/5 | wp post generate --post_content --count=5 --post_date=$(date -v-120M '+%Y-%m-%d-%H-%M-%S')
+	curl -N http://loripsum.net/api/5 | wp post generate --post_content --count=5 --post_date='2020-01-15 04:35:45'
 
 	$(call message_primary, "CONFIG SET PAGE - selectionner page accueil / article")
 	wp option update show_on_front page
