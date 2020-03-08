@@ -245,7 +245,6 @@ install_local: ## Installer une nouvelle version de Wordpress (en local)
 	wp option update blogdescription ''
 	wp post delete 1 --force
 	wp post delete 2 --force
-	wp theme delete twentytwenty
 	wp theme delete twentynineteen
 	wp theme delete twentyseventeen
 	wp plugin delete hello
